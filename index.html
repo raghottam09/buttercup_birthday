@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Alex+Brush&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4.0">
+  <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body class="cinematic-universe">
 
@@ -238,7 +238,7 @@
       </div>
     </section>
 
-    <!-- Royal Illuminated Love Letter (Revealed Upon Blowout) -->
+    <!-- Royal Illuminated Love Letter -->
     <section class="scroll-wrapper hidden" id="sealedLetter">
       <article class="royal-scroll">
         <div class="scroll-crest">
@@ -286,8 +286,19 @@
       </article>
     </section>
 
+    <!-- Background Audio: Sun Priye -->
+    <audio id="bgMusic" loop preload="auto">
+      <source src="assets/audio/sun-priye.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Soundtrack Pill Indicator -->
+    <div class="audio-control-pill" id="audioToggleBtn" title="Toggle Soundtrack">
+      <span class="music-icon">&#9835;</span>
+      <span class="music-text">Playing: Sun Priye</span>
+    </div>
+
   </main>
 
-  <script src="script.js?v=4.0"></script>
+  <script src="script.js?v=5.0"></script>
 </body>
 </html>
