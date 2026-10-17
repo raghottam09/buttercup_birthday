@@ -269,7 +269,7 @@ body {
 .duo-layout .small img { height: 260px; }
 .duo-layout .shift { margin-top: 24px; }
 
-/* Chapter IV: Proposal Spotlight & Google Drive Player */
+/* Chapter IV: Proposal Spotlight (Snug 9:16 Portrait Aspect Ratio) */
 .proposal-spotlight {
   background: #ffffff;
   border: 1px solid var(--border-light);
@@ -309,11 +309,13 @@ body {
 
 .theater-card {
   width: 100%;
-  max-width: 580px;
-  background: #faf8f5;
+  max-width: 360px;
+  margin: 0 auto;
+  background: #ffffff;
   border: 1px solid var(--border-light);
-  padding: 14px 14px 22px;
-  border-radius: 4px;
+  padding: 12px 12px 18px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-editorial);
 }
 
 .video-container {
@@ -322,7 +324,7 @@ body {
   border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 9 / 16;
-  max-height: 540px;
+  height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,7 +347,7 @@ body {
   margin-top: 14px;
 }
 
-/* Candle Sanctuary */
+/* Candle Sanctuary (Clean Vertical Hierarchy) */
 .candle-sanctuary {
   display: flex;
   justify-content: center;
@@ -358,9 +360,12 @@ body {
   border-radius: 4px;
   padding: 55px 32px;
   text-align: center;
-  max-width: 600px;
+  max-width: 580px;
   width: 100%;
   box-shadow: var(--shadow-editorial);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .altar-tag {
@@ -382,24 +387,24 @@ body {
 .altar-sub {
   color: var(--text-muted);
   font-size: 0.95rem;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
 }
 
 .cake-monument {
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0 32px;
+  margin: 10px auto 36px;
 }
 
 .aura-glow {
   position: absolute;
   top: -25px;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(235, 175, 90, 0.45) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(235, 175, 90, 0.5) 0%, transparent 70%);
   animation: pulseAura 2s infinite alternate ease-in-out;
   pointer-events: none;
 }
@@ -463,14 +468,15 @@ body {
 }
 
 .blow-trigger {
+  display: inline-block;
   background: transparent;
   color: var(--accent-rose);
   border: 1px solid var(--accent-rose);
-  padding: 13px 32px;
-  border-radius: 2px;
+  padding: 14px 34px;
+  border-radius: 99px;
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
+  font-size: 0.84rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.25s ease;
