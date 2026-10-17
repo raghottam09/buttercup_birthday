@@ -1,23 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Audio Controller
+  // 1. Audio Controller (Safely checks if widget exists)
   const audioWidget = document.getElementById('audioToggle');
   const audio = document.getElementById('bgSong');
-  const audioLabel = audioWidget.querySelector('.audio-label');
 
-  audioWidget.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play().then(() => {
-        audioWidget.classList.add('playing');
-        audioLabel.textContent = 'Pause Music';
-      }).catch(err => {
-        console.error("Audio playback interrupted:", err);
-      });
-    } else {
-      audio.pause();
-      audioWidget.classList.remove('playing');
-      audioLabel.textContent = 'Listen to Anbe’s Song';
-    }
-  });
+  if (audioWidget && audio) {
+    const audioLabel = audioWidget.querySelector('.audio-label');
+    audioWidget.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(() => {
+          audioWidget.classList.add('playing');
+          audioLabel.textContent = 'Pause Music';
+        }).catch(err => {
+          console.error("Audio playback interrupted:", err);
+        });
+      } else {
+        audio.pause();
+        audioWidget.classList.remove('playing');
+        audioLabel.textContent = 'Listen to Anbe’s Song';
+      }
+    });
+  }
 
   // 2. Birthday Candle & Letter Unseal
   const flame = document.getElementById('candleFlame');
@@ -28,16 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (flame.classList.contains('extinguished')) return;
 
     flame.classList.add('extinguished');
-    blowBtn.textContent = 'Wish Sealed &hearts;';
+    blowBtn.textContent = 'Wish Sealed \u2665';
     blowBtn.disabled = true;
 
-    // Reveal the letter smoothly
+    // Smooth reveal of the letter
     setTimeout(() => {
       letterSection.classList.remove('hidden');
       letterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 600);
   }
 
-  flame.addEventListener('click', extinguishCandle);
-  blowBtn.addEventListener('click', extinguishCandle);
+  if (flame && blowBtn) {
+    flame.addEventListener('click', extinguishCandle);
+    blowBtn.addEventListener('click', extinguishCandle);
+  }
 });
