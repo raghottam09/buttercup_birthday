@@ -41,7 +41,7 @@ body.cinematic-universe {
   z-index: 2;
 }
 
-/* Atmospheric Glow Spotlights */
+/* Ambient Backlighting */
 .spotlight {
   position: fixed;
   border-radius: 50%;
@@ -72,7 +72,7 @@ body.cinematic-universe {
   left: 10%;
 }
 
-/* Grand Intro Curtain */
+/* Intro Curtain */
 .intro-curtain {
   position: fixed;
   inset: 0;
@@ -135,7 +135,7 @@ body.cinematic-universe {
 .cinematic-container {
   position: relative;
   z-index: 3;
-  max-width: 1080px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -180,7 +180,6 @@ body.cinematic-universe {
   filter: drop-shadow(0 0 25px rgba(255, 42, 85, 0.5));
 }
 
-/* Golden Distance Bridge */
 .golden-bridge {
   display: inline-flex;
   align-items: center;
@@ -212,7 +211,6 @@ body.cinematic-universe {
   50% { transform: scale(1.4); filter: drop-shadow(0 0 15px var(--crimson-neon)); }
 }
 
-/* Relic Genesis Card */
 .hero-relic-card {
   max-width: 720px;
   background: var(--bg-card);
@@ -271,7 +269,7 @@ body.cinematic-universe {
 .film-reels {
   display: flex;
   flex-direction: column;
-  gap: 110px;
+  gap: 120px;
   margin: 60px 0 120px;
 }
 .chapter-card {
@@ -315,7 +313,7 @@ body.cinematic-universe {
   margin-bottom: 16px;
 }
 
-/* Film Frames (35mm Motion Picture Aesthetic) */
+/* Base Film Frames */
 .film-frame {
   background: #181416;
   border: 1px solid rgba(212, 175, 55, 0.25);
@@ -331,32 +329,74 @@ body.cinematic-universe {
 }
 .film-frame img {
   width: 100%;
-  height: 430px;
+  height: 440px;
   object-fit: cover;
   border-radius: 4px;
   display: block;
   filter: contrast(105%) saturate(108%);
 }
 .tall-frame img {
-  height: 500px;
+  height: 520px;
 }
 .frame-tag {
   font-family: var(--font-cinzel);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   letter-spacing: 0.2em;
   color: var(--gold-soft);
   text-align: center;
-  margin-top: 12px;
+  margin-top: 14px;
 }
-.tilt-left { transform: rotate(-2.5deg); }
-.tilt-right { transform: rotate(2.5deg); }
-.duo-visual {
+
+/* ========================================================
+   SCENE 02 OSCAR-LEVEL SPLIT REEL (EXPANDED PROPORTIONS)
+======================================================== */
+.cinematic-split-visual {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
+  width: 100%;
 }
-.duo-visual img { height: 260px; }
-.shift-down { margin-top: 30px; }
+.cinematic-split-visual .large-portrait img {
+  height: 380px; /* Generous, expansive height */
+  object-fit: cover;
+}
+.cinematic-split-visual .left-card {
+  transform: rotate(-1.5deg);
+}
+.cinematic-split-visual .right-card {
+  transform: rotate(2deg) translateY(24px);
+}
+
+/* ========================================================
+   SCENE 06 UNCROPPED PANORAMIC ADAPTIVE GALLERY
+======================================================== */
+.uncropped-duo-visual {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .uncropped-duo-visual {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+}
+.uncropped-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 12px 18px;
+}
+.uncropped-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 440px; /* Fully flexible: shows head-to-toe and landscapes */
+  object-fit: contain; /* NEVER CROPS EDGES OR FACES */
+  background: #0d0a0b;
+  border-radius: 4px;
+}
 
 /* Grand Proposal Spotlight */
 .grand-spotlight {
@@ -389,7 +429,7 @@ body.cinematic-universe {
   font-size: 1.05rem;
 }
 
-/* Premiere Cinema Video Box (Snug & Vertical) */
+/* Cinema Box */
 .cinema-box {
   width: 100%;
   max-width: 360px;
@@ -462,7 +502,6 @@ body.cinematic-universe {
   margin-bottom: 35px;
 }
 
-/* Animated 3D Cake & Candle */
 .cake-monolith {
   position: relative;
   display: flex;
