@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (video) {
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
-
-    // Attempt gentle preloading of the metadata
     video.load();
   }
 
