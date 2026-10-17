@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Buttercup | Oct 18</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Audio Deck -->
+  <div class="audio-widget" id="audioToggle">
+    <button class="audio-btn" aria-label="Toggle audio">
+      <span class="disc-icon"></span>
+      <span class="audio-label">Listen to Anbe's Song</span>
+    </button>
+    <audio id="bgSong" loop>
+      <source src="assets/audio/our-song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <main>
+    <!-- Section 1: Hero Distance & Opening Line -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <p class="tagline">October 18 &bull; Celebrating You</p>
+        <h1 class="main-title">Happy Birthday, My Buttercup</h1>
+        
+        <div class="distance-bar">
+          <span class="city">Bangalore</span>
+          <div class="connection-line">
+            <span class="heart-pulse">&#10084;</span>
+          </div>
+          <span class="city">Guwahati</span>
+        </div>
+        
+        <div class="opening-quote-box">
+          <p class="timestamp">January 30, 2026 &bull; The Message That Started Everything</p>
+          <blockquote class="opening-quote">
+            "If all goes well, I am ready to hold your hand for life and shout out so loud cracking my throat out informing the entire world that you're mine.. &hearts;"
+          </blockquote>
+          <p class="quote-sub">&mdash; Promised by Anbe, Sealed for Forever</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Timeline of Delulus Turned Reality -->
+    <section class="narrative-section">
+      <h2 class="section-title">Turning Every 'Delulu' into Our Reality</h2>
+      <p class="section-desc">You whispered your wishes, thinking they were cinematic dreams. I heard promises waiting to be kept.</p>
+
+      <div class="timeline">
+        <!-- Milestone 1: 150 Roses & Guwahati Surprise -->
+        <article class="card timeline-card">
+          <div class="card-media video-container">
+            <!-- Replace with your actual video or thumbnail -->
+            <video controls playsinline poster="assets/img/guwahati-surprise.jpg">
+              <source src="assets/video/150-roses.mp4" type="video/mp4">
+              Your browser does not support video.
+            </video>
+          </div>
+          <div class="card-body">
+            <span class="moment-date">June 28 &bull; The Bollywood Surprise</span>
+            <h3>150 Roses on Bended Knee</h3>
+            <p>You said: <em>"My man will come to surprise me like a Bollywood film, with one rose for every single day we've spoken."</em></p>
+            <p>2,500 kilometers didn't matter. Counting exactly 150 blooms didn't matter. Seeing your face lit up when I hit the ground in Guwahati made every single mile vanish.</p>
+          </div>
+        </article>
+
+        <!-- Milestone 2: Kamakhya & Meghalaya -->
+        <article class="card timeline-card">
+          <div class="card-media">
+            <img src="assets/img/laitlum-canyons.jpg" alt="Waterfalls and Laitlum Canyons, Meghalaya" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="moment-date">Meghalaya & Kamakhya</span>
+            <h3>Prayers Answered & Canyons Explored</h3>
+            <p>From bowing our heads in gratitude at Maa Kamakhya to feeling the mist at Laitlum Canyons, walking beside you stopped feeling like a journey and started feeling like coming home.</p>
+          </div>
+        </article>
+
+        <!-- Milestone 3: April 9 Reversal -->
+        <article class="card timeline-card">
+          <div class="card-media">
+            <img src="assets/img/april9-letter.jpg" alt="April 9 letter and memories" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="moment-date">April 9 &bull; When You Stole My Breath</span>
+            <h3>Midnight Cakes & Words that Brought Tears</h3>
+            <p>When the clock struck twelve, your love arrived across the map—roses, cake, and words so pure they made me break down in sheer wonder at how lucky one man could possibly be.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 3: The Virtual Birthday Ritual -->
+    <section class="candle-section">
+      <div class="ritual-container">
+        <h2>Make a Birthday Wish</h2>
+        <p class="instruction">Tap the flame to extinguish the candle and unseal your birthday letter.</p>
+        
+        <div class="cake-box">
+          <div class="candle">
+            <div class="flame" id="candleFlame"></div>
+            <div class="wick"></div>
+            <div class="wax"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <button class="blow-btn" id="blowBtn">Blow Out the Candle</button>
+      </div>
+    </section>
+
+    <!-- Section 4: The Unsealed Letter & Shayari (Hidden until blown) -->
+    <section class="letter-section hidden" id="sealedLetter">
+      <div class="letter-container">
+        <div class="wax-seal-badge">&#10024; Sealed with Love &#10024;</div>
+        
+        <div class="letter-body">
+          <h2 class="letter-heading">To My Future Wife, My Buttercup</h2>
+          
+          <p>Happy Birthday, my love.</p>
+          
+          <p>We've had our odd days, our arguments, and the occasional silence that comes with the territory of two independent souls learning to merge into one. But through every storm, disagreement, and sleepless night, one thing has never shaken: <strong>I will never leave your side.</strong> We fight to understand, not to pull away.</p>
+          
+          <p>You aren't just my girlfriend. In my heart, in front of my family, and before every friend who knows me, you are my home and my future wife. Bangalore is counting down the days until your bags are packed, the job search is won, and long distance becomes a memory we talk about over morning tea under the same roof.</p>
+
+          <div class="shayari-block">
+            <p class="shayari-line">फासले दरमियां हैं तो क्या हुआ ऐ हमसफ़र,</p>
+            <p class="shayari-line">रूह तो हर लम्हा तेरे ही पास रहती है।</p>
+            <p class="shayari-line">सारे जहाँ को बता दिया कि तू सिर्फ़ मेरी है,</p>
+            <p class="shayari-line">अब तो बस तेरी आहट का ये शहर इंतज़ार करता है।</p>
+          </div>
+
+          <p class="sign-off">Forever yours,<br><strong>Your Anbe</strong></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
