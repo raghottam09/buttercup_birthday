@@ -6,38 +6,65 @@ document.addEventListener('DOMContentLoaded', () => {
   const bgMusic = document.getElementById('bgMusic');
   const audioToggle = document.getElementById('audioToggleBtn');
 
-  function startExperience() {
-    if (intro) {
-      intro.classList.add('opened');
+  function unlockAndPlayAudio() {
+    if (!bgMusic) return;
 
-      // Start "Sun Priye" on user gesture
-      if (bgMusic) {
-        bgMusic.volume = 0.45; // Soft cinematic ambient level
-        bgMusic.play().catch(() => {
-          // Handled if browser policies require second tap
+    bgMusic.volume = 0.5;
+    
+    // Direct promise handling for iOS Safari & Android Chrome
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          if (audioToggle) {
+            audioToggle.classList.remove('muted');
+            audioToggle.querySelector('.music-text').textContent = 'Playing: Sun Priye';
+          }
+        })
+        .catch((error) => {
+          console.warn('Audio play restricted by browser policy:', error);
+          if (audioToggle) {
+            audioToggle.classList.add('muted');
+            audioToggle.querySelector('.music-text').textContent = 'Tap to Play Music';
+          }
         });
-      }
-
-      setTimeout(() => {
-        intro.style.display = 'none';
-      }, 1200);
     }
   }
 
-  if (intro && enterBtn) {
-    enterBtn.addEventListener('click', startExperience);
-    intro.addEventListener('click', (e) => {
-      if (e.target === intro) startExperience();
-    });
+  function startExperience(e) {
+    if (e) e.stopPropagation();
+
+    // Trigger audio synchronously on direct user gesture
+    unlockAndPlayAudio();
+
+    if (intro) {
+      intro.classList.add('opened');
+      setTimeout(() => {
+        intro.style.display = 'none';
+      }, 1100);
+    }
   }
 
-  // Floating Sound Pill Toggle
+  if (enterBtn) {
+    enterBtn.addEventListener('click', startExperience, { once: true });
+    enterBtn.addEventListener('touchend', startExperience, { once: true });
+  }
+
+  if (intro) {
+    intro.addEventListener('click', (e) => {
+      if (e.target === intro) startExperience(e);
+    }, { once: true });
+  }
+
+  // Floating Sound Pill Toggle (Backup manual trigger)
   if (audioToggle && bgMusic) {
-    audioToggle.addEventListener('click', () => {
+    audioToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (bgMusic.paused) {
-        bgMusic.play();
-        audioToggle.classList.remove('muted');
-        audioToggle.querySelector('.music-text').textContent = 'Playing: Sun Priye';
+        bgMusic.play().then(() => {
+          audioToggle.classList.remove('muted');
+          audioToggle.querySelector('.music-text').textContent = 'Playing: Sun Priye';
+        }).catch((err) => console.log(err));
       } else {
         bgMusic.pause();
         audioToggle.classList.add('muted');
@@ -49,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Prevent Audio Overlap with Proposal Video
   const cinemaBox = document.querySelector('.cinema-box');
   if (cinemaBox && bgMusic) {
-    // Detect mouse or tap interactions on the video screen
     cinemaBox.addEventListener('pointerdown', () => {
       if (!bgMusic.paused) {
         bgMusic.pause();
@@ -60,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Window blur listener (triggers when user focuses inside the Google Drive iframe player)
     window.addEventListener('blur', () => {
       if (document.activeElement && document.activeElement.tagName === 'IFRAME') {
         if (bgMusic && !bgMusic.paused) {
