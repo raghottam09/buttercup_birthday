@@ -1,12 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. Cinematic Intro Curtain Reveal
+  // 1. Audio and Cinematic Intro Curtain
   const intro = document.getElementById('introCurtain');
   const enterBtn = document.getElementById('enterStoryBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  const audioToggle = document.getElementById('audioToggleBtn');
 
-  function openCurtain() {
+  function startExperience() {
     if (intro) {
       intro.classList.add('opened');
+
+      // Start "Sun Priye" on user gesture
+      if (bgMusic) {
+        bgMusic.volume = 0.45; // Soft cinematic ambient level
+        bgMusic.play().catch(() => {
+          // Handled if browser policies require second tap
+        });
+      }
+
       setTimeout(() => {
         intro.style.display = 'none';
       }, 1200);
@@ -14,13 +25,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (intro && enterBtn) {
-    enterBtn.addEventListener('click', openCurtain);
+    enterBtn.addEventListener('click', startExperience);
     intro.addEventListener('click', (e) => {
-      if (e.target === intro) openCurtain();
+      if (e.target === intro) startExperience();
     });
   }
 
-  // 2. Realistic Falling 3D Rose Petals Physics
+  // Floating Sound Pill Toggle
+  if (audioToggle && bgMusic) {
+    audioToggle.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        audioToggle.classList.remove('muted');
+        audioToggle.querySelector('.music-text').textContent = 'Playing: Sun Priye';
+      } else {
+        bgMusic.pause();
+        audioToggle.classList.add('muted');
+        audioToggle.querySelector('.music-text').textContent = 'Sound: OFF';
+      }
+    });
+  }
+
+  // 2. Prevent Audio Overlap with Proposal Video
+  const cinemaBox = document.querySelector('.cinema-box');
+  if (cinemaBox && bgMusic) {
+    // Detect mouse or tap interactions on the video screen
+    cinemaBox.addEventListener('pointerdown', () => {
+      if (!bgMusic.paused) {
+        bgMusic.pause();
+        if (audioToggle) {
+          audioToggle.classList.add('muted');
+          audioToggle.querySelector('.music-text').textContent = 'Sound: Paused for Video';
+        }
+      }
+    });
+
+    // Window blur listener (triggers when user focuses inside the Google Drive iframe player)
+    window.addEventListener('blur', () => {
+      if (document.activeElement && document.activeElement.tagName === 'IFRAME') {
+        if (bgMusic && !bgMusic.paused) {
+          bgMusic.pause();
+          if (audioToggle) {
+            audioToggle.classList.add('muted');
+            audioToggle.querySelector('.music-text').textContent = 'Sound: Paused for Video';
+          }
+        }
+      }
+    });
+  }
+
+  // 3. Falling 3D Rose Petals
   const canvas = document.getElementById('petalsCanvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -74,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     drawPetals();
   }
 
-  // 3. Golden Fireworks Sparklers on Candle Blowout
+  // 4. Golden Sparklers on Candle Blowout
   const flame = document.getElementById('candleFlame');
   const glow = document.getElementById('candleGlow');
   const blowBtn = document.getElementById('blowBtn');
@@ -129,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     blowBtn.style.borderColor = '#d4af37';
     blowBtn.disabled = true;
 
-    // Dramatic scroll reveal of royal scroll
     setTimeout(() => {
       letter.classList.remove('hidden');
       letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
