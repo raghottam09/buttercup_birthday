@@ -347,9 +347,7 @@ body.cinematic-universe {
   margin-top: 14px;
 }
 
-/* ========================================================
-   SCENE 02 OSCAR-LEVEL SPLIT REEL (EXPANDED PROPORTIONS)
-======================================================== */
+/* Scene 02 Oscar Split Reel */
 .cinematic-split-visual {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -357,7 +355,7 @@ body.cinematic-universe {
   width: 100%;
 }
 .cinematic-split-visual .large-portrait img {
-  height: 380px; /* Generous, expansive height */
+  height: 380px;
   object-fit: cover;
 }
 .cinematic-split-visual .left-card {
@@ -367,9 +365,7 @@ body.cinematic-universe {
   transform: rotate(2deg) translateY(24px);
 }
 
-/* ========================================================
-   SCENE 06 UNCROPPED PANORAMIC ADAPTIVE GALLERY
-======================================================== */
+/* Scene 06 Uncropped Adaptive Visuals */
 .uncropped-duo-visual {
   display: grid;
   grid-template-columns: 1fr;
@@ -392,8 +388,8 @@ body.cinematic-universe {
 .uncropped-frame img {
   width: 100%;
   height: auto;
-  max-height: 440px; /* Fully flexible: shows head-to-toe and landscapes */
-  object-fit: contain; /* NEVER CROPS EDGES OR FACES */
+  max-height: 440px;
+  object-fit: contain;
   background: #0d0a0b;
   border-radius: 4px;
 }
@@ -689,4 +685,37 @@ body.cinematic-universe {
   color: var(--crimson-royal);
   display: block;
   margin-top: 6px;
+}
+
+/* Floating Soundtrack Pill Controller */
+.audio-control-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  background: rgba(22, 14, 17, 0.88);
+  border: 1px solid var(--gold-glow);
+  color: var(--gold-soft);
+  padding: 10px 18px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-cinzel);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+.audio-control-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+}
+.audio-control-pill.muted {
+  opacity: 0.6;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
 }
