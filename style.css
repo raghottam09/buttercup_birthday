@@ -343,6 +343,31 @@ body {
   margin-top: 14px;
 }
 
+.video-direct-tap {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.video-direct-tap a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-creme);
+  color: var(--accent-rose);
+  border: 1px solid var(--border-light);
+  padding: 8px 18px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.video-direct-tap a:hover {
+  background: var(--accent-rose);
+  color: #ffffff;
+}
+
 /* Candle Sanctuary */
 .candle-sanctuary {
   display: flex;
