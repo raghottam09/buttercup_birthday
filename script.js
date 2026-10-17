@@ -1,9 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Ensure Video has native mobile attributes
+  // 1. Video Loading and Tap-to-Play Fix
   const video = document.getElementById('proposalVideo');
   if (video) {
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
+
+    // Allow clicking the screen container to trigger play/pause
+    const screen = document.querySelector('.video-screen');
+    if (screen) {
+      screen.addEventListener('click', (e) => {
+        if (e.target !== video) {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        }
+      });
+    }
   }
 
   // 2. Birthday Candle & Letter Unseal
