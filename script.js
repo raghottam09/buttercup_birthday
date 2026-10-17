@@ -1,13 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Video Player Initializer
-  const video = document.getElementById('proposalVideo');
-  if (video) {
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', '');
-    video.load();
-  }
-
-  // 2. Birthday Candle & Letter Unseal
+  // Birthday Candle & Letter Unseal
   const flame = document.getElementById('candleFlame');
   const glow = document.getElementById('candleGlow');
   const blowBtn = document.getElementById('blowBtn');
@@ -24,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     blowBtn.style.color = '#b88648';
     blowBtn.disabled = true;
 
-    // Smooth reveal of the letter
+    // Smooth scroll down to reveal the parchment letter
     setTimeout(() => {
       letter.classList.remove('hidden');
       letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
