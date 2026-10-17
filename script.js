@@ -1,43 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Audio Controller (Safely checks if widget exists)
-  const audioWidget = document.getElementById('audioToggle');
-  const audio = document.getElementById('bgSong');
-
-  if (audioWidget && audio) {
-    const audioLabel = audioWidget.querySelector('.audio-label');
-    audioWidget.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().then(() => {
-          audioWidget.classList.add('playing');
-          audioLabel.textContent = 'Pause Music';
-        }).catch(err => {
-          console.error("Audio playback interrupted:", err);
-        });
-      } else {
-        audio.pause();
-        audioWidget.classList.remove('playing');
-        audioLabel.textContent = 'Listen to Anbe’s Song';
-      }
-    });
+  // 1. Video Element Safeguard
+  const video = document.getElementById('proposalVideo');
+  if (video) {
+    // Ensure playsinline behavior on iOS Safari
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
   }
 
-  // 2. Birthday Candle & Letter Unseal
+  // 2. Birthday Candle & Unseal Logic
   const flame = document.getElementById('candleFlame');
   const blowBtn = document.getElementById('blowBtn');
-  const letterSection = document.getElementById('sealedLetter');
+  const letter = document.getElementById('sealedLetter');
+  const halo = document.querySelector('.glow-halo');
 
   function extinguishCandle() {
     if (flame.classList.contains('extinguished')) return;
 
     flame.classList.add('extinguished');
-    blowBtn.textContent = 'Wish Sealed \u2665';
+    if (halo) halo.style.display = 'none';
+
+    blowBtn.textContent = 'Wish Sealed & Letter Unsealed \u2665';
     blowBtn.disabled = true;
 
-    // Smooth reveal of the letter
+    // Smooth reveal of the parchment letter
     setTimeout(() => {
-      letterSection.classList.remove('hidden');
-      letterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 600);
+      letter.classList.remove('hidden');
+      letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 700);
   }
 
   if (flame && blowBtn) {
