@@ -1,28 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Video Element Safeguard
+  // 1. Ensure Video has native mobile attributes
   const video = document.getElementById('proposalVideo');
   if (video) {
-    // Ensure playsinline behavior on iOS Safari
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
   }
 
-  // 2. Birthday Candle & Unseal Logic
+  // 2. Birthday Candle & Letter Unseal
   const flame = document.getElementById('candleFlame');
+  const glow = document.getElementById('candleGlow');
   const blowBtn = document.getElementById('blowBtn');
   const letter = document.getElementById('sealedLetter');
-  const halo = document.querySelector('.glow-halo');
 
-  function extinguishCandle() {
+  function makeWish() {
     if (flame.classList.contains('extinguished')) return;
 
     flame.classList.add('extinguished');
-    if (halo) halo.style.display = 'none';
+    if (glow) glow.style.display = 'none';
 
     blowBtn.textContent = 'Wish Sealed & Letter Unsealed \u2665';
+    blowBtn.style.background = '#8c7578';
     blowBtn.disabled = true;
 
-    // Smooth reveal of the parchment letter
+    // Smooth reveal of the letter
     setTimeout(() => {
       letter.classList.remove('hidden');
       letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (flame && blowBtn) {
-    flame.addEventListener('click', extinguishCandle);
-    blowBtn.addEventListener('click', extinguishCandle);
+    flame.addEventListener('click', makeWish);
+    blowBtn.addEventListener('click', makeWish);
   }
 });
