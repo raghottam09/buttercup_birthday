@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         .catch((error) => {
-          console.warn('Audio play restricted by browser policy:', error);
+          console.warn('Playback waiting for gesture:', error);
           if (audioToggle) {
             audioToggle.classList.add('muted');
             audioToggle.querySelector('.music-text').textContent = 'Tap to Play Music';
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function startExperience(e) {
     if (e) e.stopPropagation();
 
-    // Trigger audio synchronously on direct user gesture
     unlockAndPlayAudio();
 
     if (intro) {
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bgMusic.play().then(() => {
           audioToggle.classList.remove('muted');
           audioToggle.querySelector('.music-text').textContent = 'Playing: Sun Priye';
-        }).catch((err) => console.log(err));
+        }).catch(console.error);
       } else {
         bgMusic.pause();
         audioToggle.classList.add('muted');
