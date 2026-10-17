@@ -223,7 +223,7 @@ body {
   margin-bottom: 16px;
 }
 
-/* Editorial Photo Framing */
+/* Editorial Framing */
 .editorial-frame {
   background: #ffffff;
   padding: 12px 12px 22px;
@@ -269,7 +269,7 @@ body {
 .duo-layout .small img { height: 260px; }
 .duo-layout .shift { margin-top: 24px; }
 
-/* Chapter IV: Proposal Spotlight (Snug 9:16 Portrait Aspect Ratio) */
+/* Chapter IV: Proposal Spotlight (Vertical Portrait Theater) */
 .proposal-spotlight {
   background: #ffffff;
   border: 1px solid var(--border-light);
@@ -347,7 +347,7 @@ body {
   margin-top: 14px;
 }
 
-/* Candle Sanctuary (Clean Vertical Hierarchy) */
+/* Candle Altar */
 .candle-sanctuary {
   display: flex;
   justify-content: center;
