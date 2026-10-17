@@ -1,23 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Video Loading and Tap-to-Play Fix
+  // 1. Video Player Initializer
   const video = document.getElementById('proposalVideo');
   if (video) {
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
 
-    // Allow clicking the screen container to trigger play/pause
-    const screen = document.querySelector('.video-screen');
-    if (screen) {
-      screen.addEventListener('click', (e) => {
-        if (e.target !== video) {
-          if (video.paused) {
-            video.play();
-          } else {
-            video.pause();
-          }
-        }
-      });
-    }
+    // Attempt gentle preloading of the metadata
+    video.load();
   }
 
   // 2. Birthday Candle & Letter Unseal
@@ -33,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (glow) glow.style.display = 'none';
 
     blowBtn.textContent = 'Wish Sealed & Letter Unsealed \u2665';
-    blowBtn.style.background = '#8c7578';
+    blowBtn.style.borderColor = '#b88648';
+    blowBtn.style.color = '#b88648';
     blowBtn.disabled = true;
 
     // Smooth reveal of the letter
